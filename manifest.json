@@ -1,0 +1,36 @@
+{
+  "name": "Refer me in!",
+  "version": "1.1",
+  "description": "Bypass nags and paywalls on websites like Medium or Wall Street Journal",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "manifest_version": 2,
+  "options_ui": {
+		"chrome_style": true,
+		"page": "./options/options.html"
+	},
+  "browser_action": {
+    "default_popup": "./options/options.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.medium.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "permissions": [
+    "<all_urls>",
+    "cookies",
+    "storage",
+    "webRequest",
+    "webRequestBlocking" 
+  ]
+}
